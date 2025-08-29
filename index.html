@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RiseEdge · Design Verification • DFT • IP Integration</title>
+  <meta name="description" content="RiseEdge delivers ASIC/SoC design verification, DFT, IP integration, and front‑end implementation services — from RTL to sign‑off." />
+  <meta property="og:title" content="RiseEdge · Design Verification • DFT • IP Integration" />
+  <meta property="og:description" content="RiseEdge delivers ASIC/SoC design verification, DFT, IP integration, and front‑end implementation services — from RTL to sign‑off." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og-banner.png" />
+  <meta name="theme-color" content="#21103a" />
+  <link rel="icon" href="assets/favicon.svg" />
+  <style>
+    :root {
+      /* Brand palette (purple → orange to match riseedge.com look) */
+      --brand: #7C3AED;   /* purple */
+      --brand-2: #F97316; /* orange */
+      --ring: rgba(124, 58, 237, .35);
+
+      /* Neutrals (dark default) */
+      --bg: #0e0a1f;      /* deep indigo */
+      --panel: #151128;   /* indigo 950 */
+      --panel-2: #1b1533; /* indigo 900 */
+      --text: #e5e7eb;    /* gray 200 */
+      --muted: #a1a1aa;   /* zinc 400 */
+      --card: #111827;    /* slate 900 */
+      --border: #26223c;  /* indigo 800 */
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #ffffff;
+        --panel: #f8fafc;  /* slate 50 */
+        --panel-2: #f1f5f9; /* slate 100 */
+        --text: #0f172a;    /* slate 900 */
+        --muted: #475569;   /* slate 600 */
+        --card: #ffffff;
+        --border: #e5e7eb;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font: 15px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1200px 700px at 15% -10%, color-mix(in srgb, var(--brand) 30%, transparent), transparent 55%),
+        radial-gradient(1200px 700px at 100% 10%, color-mix(in srgb, var(--brand-2) 24%, transparent), transparent 55%),
+        var(--bg);
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, 92vw); margin-inline: auto; }
+
+    header { position: sticky; top: 0; z-index: 40; backdrop-filter: blur(8px); background: color-mix(in srgb, var(--bg) 70%, transparent); border-bottom: 1px solid var(--border); }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .brand { display: flex; align-items: center; gap: .75rem; font-weight: 700; letter-spacing: .3px; }
+    .brand-logo { width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: 0 4px 16px var(--ring); }
+    .nav a { margin-left: 20px; color: var(--muted); }
+    .nav a.cta { color: #0b0f1a; background: linear-gradient(135deg, var(--brand), var(--brand-2)); padding: 8px 14px; border-radius: 12px; font-weight: 600; box-shadow: 0 6px 20px var(--ring); }
+
+    .hero { padding: 72px 0 48px; text-align: left; display: grid; grid-template-columns: 1.25fr 1fr; gap: 36px; align-items: center; }
+    .hero h1 { font-size: clamp(28px, 5vw, 46px); line-height: 1.1; margin: 0 0 12px; letter-spacing: -0.5px; }
+    .hero p { color: var(--muted); margin: 0 0 24px; font-size: clamp(16px, 2.5vw, 18px); }
+    .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .button { display: inline-flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 14px; font-weight: 600; border: 1px solid var(--border); background: var(--panel); color: var(--text); }
+    .button.primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #0b0f1a; border-color: transparent; box-shadow: 0 8px 24px var(--ring); }
+    .button:hover { transform: translateY(-1px); transition: transform .15s ease; }
+
+    .art { aspect-ratio: 4/3; background:
+      radial-gradient(120px 80px at 20% 20%, color-mix(in srgb, var(--brand) 30%, transparent), transparent 60%),
+      radial-gradient(140px 90px at 80% 30%, color-mix(in srgb, var(--brand-2) 30%, transparent), transparent 60%),
+      linear-gradient(180deg, color-mix(in srgb, var(--panel), transparent 15%), color-mix(in srgb, var(--panel-2), transparent 10%));
+      border: 1px solid var(--border); border-radius: 20px; box-shadow: inset 0 1px 0 rgba(255,255,255,.03), 0 20px 60px rgba(0,0,0,.2);
+      display: grid; place-items: center; color: var(--muted); font-weight: 600; letter-spacing: .2px;
+    }
+
+    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 999px; background: color-mix(in srgb, var(--panel), transparent 25%); border: 1px solid var(--border); color: var(--muted); font-weight: 600; font-size: 12px; }
+    .pills { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 36px 0 14px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 18px; }
+    .card h3 { margin: 0 0 6px; font-size: 18px; }
+    .card p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .section { padding: 28px 0 8px; }
+    .section header h2 { font-size: 20px; margin: 0 0 6px; }
+    .section header p { margin: 0; color: var(--muted); }
+
+    .repos { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 16px; }
+    .repo { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 14px; }
+    .repo a { display: block; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+    .repo .meta { color: var(--muted); font-size: 13px; }
+
+    footer { padding: 24px 0 44px; color: var(--muted); border-top: 1px solid var(--border); margin-top: 32px; }
+    footer .foot { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 16px; }
+    footer nav a { margin-left: 16px; }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .nav a.responsive-hide { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand" aria-label="Company">
+        <div class="brand-logo" aria-hidden="true"></div>
+        <span>RiseEdge</span>
+      </div>
+      <nav aria-label="Primary">
+        <a class="responsive-hide" href="#work">Work</a>
+        <a class="responsive-hide" href="#capabilities">Capabilities</a>
+        <a class="responsive-hide" href="#repos">Repos</a>
+        <a class="cta" href="https://github.com/{{ORG_SLUG}}">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container hero" id="home">
+      <div>
+        <span class="pill">Chip Design • Verification • AI</span>
+        <h1>Reliable silicon — from RTL to sign‑off</h1>
+        <p>Design Verification (UVM), DFT architecture & implementation, IP integration, and front‑end flow (constraints, low‑power synthesis, STA timing closure).</p>
+        <div class="actions">
+          <a class="button primary" href="#contact">Contact RiseEdge</a>
+          <a class="button" href="#repos">Explore repos</a>
+        </div>
+        <div class="pills" aria-label="Tech stack">
+          <span class="pill">SystemVerilog • UVM</span>
+          <span class="pill">DFT / ATPG</span>
+          <span class="pill">RISC‑V/ARM</span>
+          <span class="pill">Synthesis • STA</span>
+          <span class="pill">Verification Automation</span>
+        </div>
+      </div>
+      <div class="art" aria-hidden="true">Purple → Orange silicon gradient</div>
+    </section>
+
+    <section class="container section" id="capabilities">
+      <header>
+        <h2>What we do</h2>
+        <p>Minimal promise, maximal execution.</p>
+      </header>
+      <div class="grid">
+        <div class="card">
+          <h3>Design</h3>
+          <p>RTL micro‑architecture for AI/ML, memory subsystems, NoC, and compute blocks.</p>
+        </div>
+        <div class="card">
+          <h3>Verify</h3>
+          <p>Reusable UVM environments, assertions, coverage closure, and regressions at scale.</p>
+        </div>
+        <div class="card">
+          <h3>Implement</h3>
+          <p>Synthesis to sign‑off: timing, power, IR/EM, and FPGA prototyping for bring‑up.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section" id="work">
+      <header>
+        <h2>Focus areas</h2>
+        <p>AI inference, protocol IP, and verification automation.</p>
+      </header>
+      <div class="grid">
+        <div class="card">
+          <h3>Edge AI thermals</h3>
+          <p>Dynamic frequency/core scaling and context‑aware inference for embedded CPUs.</p>
+        </div>
+        <div class="card">
+          <h3>Protocol IP</h3>
+          <p>SPI/APB/AXI/JTAG agents, formal checks, and RAL flows for dependable IPs.</p>
+        </div>
+        <!-- Removed GCN design block as requested -->
+      </div>
+    </section>
+
+    <section class="container section" id="repos">
+      <header>
+        <h2>Open repositories</h2>
+        <p>Selected public work. Pin these on your org profile.</p>
+      </header>
+      <div class="repos">
+        <div class="repo">
+          <a href="https://github.com/{{ORG_SLUG}}/uvm-spi-agent">uvm-spi-agent</a>
+          <div class="meta">UVM agent + sequences + scoreboard for SPI master/slave.</div>
+        </div>
+        <div class="repo">
+          <a href="https://github.com/{{ORG_SLUG}}/jtag-tap-uvm">jtag-tap-uvm</a>
+          <div class="meta">IEEE 1149.1 TAP RTL and UVM TB with scan chain checks.</div>
+        </div>
+        <div class="repo">
+          <a href="https://github.com/{{ORG_SLUG}}/apb-ral-kit">apb-ral-kit</a>
+          <div class="meta">Auto‑generated RAL models + adapter + sequences for APB.</div>
+        </div>
+      </div>
+      <!-- Hiring banner removed as requested -->
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="container foot">
+      <div>
+        <div class="brand" style="margin-bottom: 6px;">
+          <div class="brand-logo" aria-hidden="true"></div>
+          <span>RiseEdge</span>
+        </div>
+        <small>© <span id="y"></span> RiseEdge. Building dependable silicon for intelligent systems.</small>
+      </div>
+      <nav aria-label="Footer">
+        <a href="mailto:info@riseedge.com">info@riseedge.com</a>
+        <a href="https://github.com/{{ORG_SLUG}}">GitHub</a>
+        <a href="https://riseedge.com">riseedge.com</a>
+      </nav>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
