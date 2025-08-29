@@ -9,24 +9,36 @@
   <meta property="og:description" content="RiseEdge delivers ASIC/SoC design verification, DFT, IP integration, and front‑end implementation services — from RTL to sign‑off." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/og-banner.png" />
-  <meta name="theme-color" content="#21103a" />
+  <meta name="theme-color" content="#0d1117" />
   <link rel="icon" href="assets/favicon.svg" />
   <style>
     :root {
-      /* Brand palette (purple → orange to match riseedge.com look) */
-      --brand: #7C3AED;   /* purple */
-      --brand-2: #F97316; /* orange */
-      --ring: rgba(124, 58, 237, .35);
+  /* RiseEdge brand accents (subtle) */
+  --brand: #21387A;    /* blue from logo */
+  --brand-2: #F26D21;  /* orange from logo */
+  --ring: rgba(33, 56, 122, .25);
 
-      /* Neutrals (dark default) */
-      --bg: #0e0a1f;      /* deep indigo */
-      --panel: #151128;   /* indigo 950 */
-      --panel-2: #1b1533; /* indigo 900 */
-      --text: #e5e7eb;    /* gray 200 */
-      --muted: #a1a1aa;   /* zinc 400 */
-      --card: #111827;    /* slate 900 */
-      --border: #26223c;  /* indigo 800 */
-    }
+  /* GitHub-dark style neutrals */
+  --bg: #0d1117;       /* page background */
+  --panel: #0d1117;    /* header/nav panels */
+  --panel-2: #161b22;  /* cards/sections */
+  --text: #c9d1d9;     /* primary text */
+  --muted: #8b949e;    /* secondary text */
+  --card: #161b22;     /* card bg */
+  --border: #30363d;   /* borders */
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    /* light fallback if user forces light mode */
+    --bg: #ffffff;
+    --panel: #f6f8fa;
+    --panel-2: #ffffff;
+    --text: #24292f;
+    --muted: #57606a;
+    --card: #ffffff;
+    --border: #d0d7de;
+  }
+}
     @media (prefers-color-scheme: light) {
       :root {
         --bg: #ffffff;
@@ -40,7 +52,7 @@
     }
 
     * { box-sizing: border-box; }
-    html, body { height: 100%; }
+    html, body { margin: 0; font: 15px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; color: var(--text); background: var(--bg); }
     body {
       margin: 0;
       font: 15px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
@@ -53,22 +65,22 @@
     a { color: inherit; text-decoration: none; }
     .container { width: min(1120px, 92vw); margin-inline: auto; }
 
-    header { position: sticky; top: 0; z-index: 40; backdrop-filter: blur(8px); background: color-mix(in srgb, var(--bg) 70%, transparent); border-bottom: 1px solid var(--border); }
+    header { position: sticky; top: 0; z-index: 40; background: var(--panel); border-bottom: 1px solid var(--border); }
     .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
     .brand { display: flex; align-items: center; gap: .75rem; font-weight: 700; letter-spacing: .3px; }
     .brand-logo { height: 28px; width: auto; display: block; }
     .nav a { margin-left: 20px; color: var(--muted); }
-    .nav a.cta { color: #0b0f1a; background: linear-gradient(135deg, var(--brand), var(--brand-2)); padding: 8px 14px; border-radius: 12px; font-weight: 600; box-shadow: 0 6px 20px var(--ring); }
+    .nav a.cta { color: #ffffff; background: var(--brand); padding: 8px 14px; border-radius: 8px; font-weight: 600; border: 1px solid color-mix(in srgb, var(--brand), #000 20%); }
 
     .hero { padding: 72px 0 48px; text-align: left; display: grid; grid-template-columns: 1.25fr 1fr; gap: 36px; align-items: center; }
     .hero h1 { font-size: clamp(28px, 5vw, 46px); line-height: 1.1; margin: 0 0 12px; letter-spacing: -0.5px; }
     .hero p { color: var(--muted); margin: 0 0 24px; font-size: clamp(16px, 2.5vw, 18px); }
     .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; }
     .button { display: inline-flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 14px; font-weight: 600; border: 1px solid var(--border); background: var(--panel); color: var(--text); }
-    .button.primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #0b0f1a; border-color: transparent; box-shadow: 0 8px 24px var(--ring); }
+    .button.primary { background: var(--brand); color: #ffffff; border-color: color-mix(in srgb, var(--brand), #000 20%); }
     .button:hover { transform: translateY(-1px); transition: transform .15s ease; }
 
-    .art { aspect-ratio: 4/3; background-image: linear-gradient(180deg, color-mix(in srgb, var(--panel), transparent 15%), color-mix(in srgb, var(--panel-2), transparent 10%)), radial-gradient(120px 80px at 20% 20%, color-mix(in srgb, var(--brand) 30%, transparent), transparent 60%), radial-gradient(140px 90px at 80% 30%, color-mix(in srgb, var(--brand-2) 30%, transparent), transparent 60%), url('assets/hero-board.jpg'); background-size: cover; background-position: center; border: 1px solid var(--border); border-radius: 20px; box-shadow: inset 0 1px 0 rgba(255,255,255,.03), 0 20px 60px rgba(0,0,0,.2); display: grid; place-items: center; color: var(--muted); font-weight: 600; letter-spacing: .2px; filter: grayscale(20%) contrast(105%) brightness(95%); }
+    .art { aspect-ratio: 4/3; background-image: linear-gradient(0deg, rgba(13,17,23,.75), rgba(13,17,23,.75)), url('assets/hero-board.jpg'); background-size: cover; background-position: center; background-blend-mode: multiply; border: 1px solid var(--border); border-radius: 12px; filter: grayscale(100%) contrast(105%); }
 
     .pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 999px; background: color-mix(in srgb, var(--panel), transparent 25%); border: 1px solid var(--border); color: var(--muted); font-weight: 600; font-size: 12px; }
     .pills { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
