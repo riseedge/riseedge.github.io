@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RAL Verification · RiseEdge</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <img class="brand-logo" src="../assets/logo.png" alt="RiseEdge logo">
+      <!-- <span>RiseEdge</span> -->
+    </div>
+    <nav>
+      <a href="../">Home</a>
+      <a href="../projects/protocols.html">Protocols</a>
+      <a href="../projects/risc_v.html">RISC-V</a>
+      <a href="../projects/ral.html" class="active">RAL</a>
+      <a class="cta" href="https://github.com/riseedge">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="container section">
+    <header>
+      <h2>Register Abstraction Layer (RAL) Verification</h2>
+      <p>UVM RAL model design and validation for register read/write, reset behavior, and functional coverage.</p>
+    </header>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Overview</h3>
+        <p>
+          RAL model and adapter with structured sequences for read, write, bit-bash, and reset operations.
+          Includes error injection and masking checks to ensure coverage of corner cases in register access.
+        </p>
+        <p class="status accent">Status: Completed — verified and coverage-closed.</p>
+      </div>
+
+      <div class="project-card">
+        <h3>Flow</h3>
+        <p>
+          Complete model build flow with predictor integration, adapter mapping, and mirror validation. 
+          Functional coverage ensures all register access types and reset values meet specification.
+        </p>
+        <p class="status accent">Status: Verified using UVM RAL Framework.</p>
+      </div>
+
+      <div class="project-card">
+        <h3>Artifacts</h3>
+        <p>
+          Includes waveform snapshots, coverage summaries, and simulation logs confirming reset and access functionality.
+          The repository also contains documentation for RAL model generation and UVM environment setup.
+        </p>
+        <a href="https://github.com/riseedge/Projects/tree/main/RAL"
+           target="_blank" class="link">View on GitHub ↗</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-flex">
+    <div class="footer-left">
+      <img class="brand-logo" src="../assets/logo.png" alt="RiseEdge logo">
+      <div class="footer-nav">
+        <a href="../">Home</a>
+        <a href="../projects/protocols.html">Protocols</a>
+        <a href="../projects/risc_v.html">RISC-V</a>
+        <a href="../projects/ral.html" class="active">RAL</a>
+      </div>
+      <small>© <span id="y"></span> RiseEdge · Building dependable silicon</small>
+    </div>
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <a href="mailto:info@riseedge.com" class="contact-link"><i class="fa-solid fa-envelope"></i> info@riseedge.com</a>
+      <a href="https://maps.google.com/?q=Tempe,Arizona" target="_blank" class="contact-link">
+        <i class="fa-solid fa-location-dot"></i> Tempe, Arizona, USA
+      </a>
+      <div class="socials">
+        <a href="https://github.com/riseedge" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com/company/riseedge" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

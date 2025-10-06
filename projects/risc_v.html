@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RISC-V Projects · RiseEdge</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <img class="brand-logo" src="../assets/logo.png" alt="RiseEdge logo">
+      <!-- <span>RiseEdge</span> -->
+    </div>
+    <nav>
+      <a href="../">Home</a>
+      <a href="../projects/protocols.html">Protocols</a>
+      <a href="../projects/risc_v.html" class="active">RISC-V</a>
+      <a href="../projects/ral.html">RAL</a>
+      <a class="cta" href="https://github.com/riseedge">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="container section">
+    <header>
+      <h2>RISC-V Core Explorations</h2>
+      <p>Ongoing feasibility studies for open-source RISC-V cores with Verilator and VCS-based simulation flows.</p>
+    </header>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>CVA6 / Ariane</h3>
+        <p>
+          Evaluating the CVA6 core using Verilator for RTL-level feasibility and integration checks. 
+          Focus areas include pipeline validation, memory subsystem interface, and cache coherence exploration.
+        </p>
+        <p class="status accent">Status: Ongoing — Verilator & VCS validation in progress.</p>
+        <!-- <a href="https://github.com/riseedge/Projects/tree/main/CVA6" target="_blank" class="link">GitHub ↗</a> -->
+      </div>
+
+      <div class="project-card">
+        <h3>Ibex</h3>
+        <p>
+          Setting up the Ibex RISC-V core for RTL verification and simulation using Verilator and Synopsys VCS.
+          Current focus on CSR test development, waveform validation, and toolchain bring-up.
+        </p>
+        <p class="status accent">Status: Ongoing — Verilator & VCS validation in progress.</p>
+        <!-- <a href="https://github.com/riseedge/Projects/tree/main/Ibex" target="_blank" class="link">GitHub ↗</a> -->
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-flex">
+    <div class="footer-left">
+      <img class="brand-logo" src="../assets/logo.png" alt="RiseEdge logo">
+      <div class="footer-nav">
+        <a href="../">Home</a>
+        <a href="../projects/protocols.html">Protocols</a>
+        <a href="../projects/risc_v.html" class="active">RISC-V</a>
+        <a href="../projects/ral.html">RAL</a>
+      </div>
+      <small>© <span id="y"></span> RiseEdge · Building dependable silicon</small>
+    </div>
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <a href="mailto:info@riseedge.com" class="contact-link"><i class="fa-solid fa-envelope"></i> info@riseedge.com</a>
+      <a href="https://maps.google.com/?q=Tempe,Arizona" target="_blank" class="contact-link">
+        <i class="fa-solid fa-location-dot"></i> Tempe, Arizona, USA
+      </a>
+      <div class="socials">
+        <a href="https://github.com/riseedge" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com/company/riseedge" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
