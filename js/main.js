@@ -71,3 +71,5 @@ if (toggle) {
     navLinks.classList.toggle('open');
   });
 }
+// toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+
