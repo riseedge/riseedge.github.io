@@ -1,6 +1,6 @@
 <!-- PROJECT BANNER -->
 <p align="center">
-  <img src="./assets/logo.png" alt="RiseEdge Logo" width="280"/>
+  <img src="../assets/logo.png" alt="RiseEdge Logo" width="280"/>
 </p>
 
 <h2 align="center">APB Protocol Verification Environment (SystemVerilog UVM)</h2>
