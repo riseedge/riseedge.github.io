@@ -1,6 +1,6 @@
 <!-- PROJECT BANNER -->
 <p align="center">
-  <img src="../assets/logo.png" alt="RiseEdge Logo" width="280"/>
+  <img src="../assets/logo.png" alt="RiseEdge Logo" width="250"/>
 </p>
 
 <h2 align="center">JTAG (IEEE 1149.1) TAP Controller Verification (SystemVerilog UVM)</h2>
@@ -96,5 +96,4 @@ vsim -c tb_top -do "run -all; quit"
 
 <p align="center">
   <b>© 2025 RiseEdge Verification Catalog</b><br>
-  Designed & Verified by Sri Sai Rakesh Nakkilla
 </p>
